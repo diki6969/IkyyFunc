@@ -73,7 +73,7 @@ module.exports = class Function {
       return new Promise(async (resolve, reject) => {
          try {
             if (this.isUrl(file)) {
-               let buff = await (await axios.get(file, { responseType: "arraybuffer", headers: options })).data
+               let buff = await (await fetch(file)).buffer()
                resolve(buff)
             } else {
                let buff = fs.readFileSync(file)
